@@ -1,23 +1,12 @@
 import React, { useState, useRef, useEffect } from "react"
 import * as THREE from "three"
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
 import { Canvas, extend, useThree, useRender } from "react-three-fiber"
 import { useSpring, a } from "react-spring/three"
 import "./style.css"
 
 
 extend({ OrbitControls })
-
-const SpaceShip = () => {
-  const [model, setModel] = useState()
-
-  useEffect(() => {
-    new GLTFLoader().load("/scene.gltf", setModel)
-  })
-
-  return model ? <primitive object={model.scene} /> : null
-}
 
 const Controls = () => {
   const orbitRef = useRef()
@@ -50,7 +39,7 @@ const Box = () => {
   const [active, setActive] = useState(false)
   const props = useSpring({
     scale: active ? [1.5, 1.5, 1.5] : [1, 1, 1],
-    color: hovered ? "hotpink" : "gray",
+    color: hovered ? "green" : "blue",
   })
 
   return (
